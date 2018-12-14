@@ -13,11 +13,15 @@ confint(m_prostate, c("age"), .90)
 # age is negatively correlated with lpsa with 90% conficence, but not with 95%
 
 library(ellipse)
-plot(ellipse(m_prostate, 3:4), type = "l")
-points(coef(m_prostate)[3], coef(m_prostate)[4], pch = 1)
+plot(ellipse(m_prostate, 4:5), type = "l")
+points(coef(m_prostate)[4], coef(m_prostate)[5, pch = 1)
 # since the origin is outside of the elipse we reject joint hypothesis age + lweight = 0
 # since 0 is outside of the x dimension, we can regect lweight = 0
 # we can't reject age = 0, since 0 is in the y dimension
+
+                                             #as you did the wrong code you took out wrong conclusions
+                                             #with these changes, the point(0,0) is inside the ellipse
+                                             #now, it is concluded that H0:coef(age)=coef(lbph)=0 cannot be rejected
 
 ts <- m_prostate %>% summary() %>% coef()%>% .[4,]
 nreps <- 10000
